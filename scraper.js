@@ -52,12 +52,12 @@ var weatherObj = [];
                     directionVente:array['7']['data']
                 }
         });
-    document.write(weatherObj);
+    document.write("weatherObj");
     //document.getElementById("output").innerHTML="weatherObj";
     //return weatherObj;
     //console.log("It’s " + temperature + " degrees Fahrenheit.");
   } else {
-    console.log("We’ve encountered an error: " + error);
+    document.write("We’ve encountered an error: " + error);
   }
 });
 }
