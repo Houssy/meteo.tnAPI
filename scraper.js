@@ -53,7 +53,7 @@ var weatherObj = [];
                 }
         });
     console.log(weatherObj);
-    document.getElementById("output").innerHTML=weatherObj;
+    document.getElementById("output").innerHTML="weatherObj";
     return weatherObj;
     //console.log("It’s " + temperature + " degrees Fahrenheit.");
   } else {
