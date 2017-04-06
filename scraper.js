@@ -1,5 +1,5 @@
 var weatherObj = [];
-  for (var i = 1; i <= 24; i++) {
+  for (var i = 1; i <= 2; i++) {
   var request = require("request"),
   cheerio = require("cheerio"),
   url = "http://www.meteo.tn/htmlfr/donnees/testpage.php?gouv="+i;  
