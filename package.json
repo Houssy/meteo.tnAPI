@@ -1,12 +1,21 @@
 {
   "name": "scraper",
-  "version": "1.0.0",
-  "description": "scraper for meteo.tn",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+  "version": "0.2.5",
+  "description": "meteo.tn scraper",
+  "engines": {
+    "node": "5.9.1"
   },
-  "author": "karimation",
-  "license": "ISC"
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "4.13.3"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "karimation"
 }

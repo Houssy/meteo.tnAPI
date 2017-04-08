@@ -1,0 +1,5 @@
+{
+  "name": "scrapper",
+  "description": "meteo.tn scraper",
+  "keywords": ["node", "express", "static"],
+}
