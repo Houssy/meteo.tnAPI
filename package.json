@@ -1,6 +1,6 @@
 {
   "name": "scraper",
-  "version": "0.2.5",
+  "version": "1.0.1",
   "description": "meteo.tn scraper",
   "engines": {
     "node": "5.9.1"
@@ -10,6 +10,9 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "cheerio": "*",
+    "url": "*",
+    "request": "*",	 	
     "express": "4.13.3"
   },
   "keywords": [
@@ -17,5 +20,6 @@
     "heroku",
     "express"
   ],
-  "license": "karimation"
+  "license": "UNLICENSED",
+  "author": "karimation"
 }
