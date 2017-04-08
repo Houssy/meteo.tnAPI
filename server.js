@@ -1,9 +1,43 @@
+var express = require('express')
+var app = express()
+var urlParse = require('url');
+
+app.set('port', (process.env.PORT || 5000))
+
+app.get('/*', function(request, response) {
+  var query = urlParse.parse(request.url, true).query;
+  var pathname = urlParse.parse(request.url, true).pathname;
+  if(pathname=='/api' && query['city']!=null){
+    var c =false;
+    for(var key in weatherObj){ 
+        if(weatherObj[key]['name']==query['city']){
+            response.send(weatherObj[key]['informations']);
+            c = true;
+        }
+    }
+    if(!c){
+        response.send("Ops! "+query['city']+" n'existe plus !");
+    }
+    //response.send(c)
+    //response.send('-------------------------------------------------------')
+    //response.send(weatherObj[query['city']])
+  }else{
+    response.send("Merci de verifier votre requette!
+        forme: /api?city=(votreRegion)
+        ");
+  }
+})
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
+})
+
 var weatherObj = [];
   for (var i = 1; i <= 24; i++) {
   var request = require("request"),
   cheerio = require("cheerio"),
   url = "http://www.meteo.tn/htmlfr/donnees/testpage.php?gouv="+i;  
- request(url, function (error, response, body) {
+  request(url, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body);
         //temperature = $("[data-variable='temperature'] .wx-value").html();
@@ -31,33 +65,33 @@ var weatherObj = [];
         console.log(myJSON);
         */
         weatherObj.push({
+            
                 name: region[0]['data'],
-                date: "today",
                 informations: 
                 {
-                    tempMin: array['0']['data'],
-                    tempMax: array['1']['data'],
-                    forceVente: array['2']['data'],
-                    directionVente:array['3']['data']
+                        today:
+                        {
+                        tempMin: array['0']['data'],
+                        tempMax: array['1']['data'],
+                        forceVente: array['2']['data'],
+                        directionVente:array['3']['data']
+                        },
+                        tomorrow:{
+                        tempMin: array['4']['data'],
+                        tempMax: array['5']['data'],
+                        forceVente: array['6']['data'],
+                        directionVente:array['7']['data']
+                        }
                 }
+            
         });
-        weatherObj.push({
-                name: region[0]['data'],
-                date: "tomorrow",
-                informations: 
-                {
-                    tempMin: array['4']['data'],
-                    tempMax: array['5']['data'],
-                    forceVente: array['6']['data'],
-                    directionVente:array['7']['data']
-                }
-        });
-    document.write(weatherObj);
+        console.log(weatherObj);
+    //document.write(weatherObj);
     //document.getElementById("output").innerHTML="weatherObj";
-    return weatherObj;
+    //return weatherObj;
     //console.log("It’s " + temperature + " degrees Fahrenheit.");
   } else {
-    document.write("We’ve encountered an error: " + error);
+    console.loadg("We’ve encountered an error: " + error);
   }
 });
 }
