@@ -22,9 +22,7 @@ app.get('/*', function(request, response) {
     //response.send('-------------------------------------------------------')
     //response.send(weatherObj[query['city']])
   }else{
-    response.send("Merci de verifier votre requette!
-        forme: /api?city=(votreRegion)
-        ");
+    response.send("Merci de verifier votre requette! forme: /api?city=(votreRegion)");
   }
 })
 
