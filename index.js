@@ -63,7 +63,6 @@ var weatherObj = [];
         console.log(myJSON);
         */
         weatherObj.push({
-            
                 name: region[0]['data'],
                 informations: 
                 {
@@ -72,13 +71,15 @@ var weatherObj = [];
                         tempMin: array['0']['data'],
                         tempMax: array['1']['data'],
                         forceVente: array['2']['data'],
-                        directionVente:array['3']['data']
+                        directionVente:array['3']['data'],
+                        id: i
                         },
                         tomorrow:{
                         tempMin: array['4']['data'],
                         tempMax: array['5']['data'],
                         forceVente: array['6']['data'],
-                        directionVente:array['7']['data']
+                        directionVente:array['7']['data'],
+                        id: i
                         }
                 }
             
