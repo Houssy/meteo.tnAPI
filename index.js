@@ -35,7 +35,6 @@ var weatherObj = [];
   var request = require("request"),
   cheerio = require("cheerio"),
   url = "http://www.meteo.tn/htmlfr/donnees/testpage.php?gouv="+i;
-  urlImg = "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg";
   request(url, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body);
@@ -73,14 +72,14 @@ var weatherObj = [];
                         tempMin: array['0']['data'],
                         tempMax: array['1']['data'],
                         forceVente: array['2']['data'],
-                        img: urlImg,
+                        img: "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg",
                         directionVente:array['3']['data']
                         },
                         tomorrow:{
                         tempMin: array['4']['data'],
                         tempMax: array['5']['data'],
                         forceVente: array['6']['data'],
-                        img: urlImg,
+                        img: "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg",
                         directionVente:array['7']['data']
                         }
                 }
