@@ -35,9 +35,11 @@ var weatherObj = [];
   var request = require("request"),
   cheerio = require("cheerio"),
   url = "http://www.meteo.tn/htmlfr/donnees/testpage.php?gouv="+i;
+  //urlImg = "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg";
   request(url, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body);
+        //console.log($('td[bordercolor="#FFFFFF"]').contents()[0]['next']['attribs']['src']);
         //temperature = $("[data-variable='temperature'] .wx-value").html();
         var array = $('td[class=m12bvert] b').contents();
         //console.log("region");
@@ -53,15 +55,15 @@ var weatherObj = [];
         console.log("tMin: "+array['5']['data']); 
         console.log("force de vent: "+array['6']['data']); 
         console.log("direction de vent: "+array['7']['data']);*/
-
-        /*var myObj = [{ "tMin":array['0']['data'], "tMax":array['1']['data'], 
+		/*var myObj = [{ "tMin":array['0']['data'], "tMax":array['1']['data'], 
         "forceVente":array['2']['data'],"directionVente":array['3']['data']},
         { "tMin":array['4']['data'], "tMax":array['5']['data'], 
         "forceVente":array['6']['data'],"directionVente":array['7']['data']}];
         //myObj.push({ "name":"John", "age":3001, "cisty":"New Yorks"} )
         var myJSON = JSON.stringify(myObj);
-        console.log(myJSON);
+        console.log(myJSON);	
         */
+        urlImg = "http://www.meteo.tn/htmlfr/donnees/"+$('td[bordercolor="#FFFFFF"]').contents()[0]['next']['attribs']['src'];
         weatherObj.push({
             
                 name: region[0]['data'],
@@ -72,14 +74,14 @@ var weatherObj = [];
                         tempMin: array['0']['data'],
                         tempMax: array['1']['data'],
                         forceVente: array['2']['data'],
-                        img: "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg",
+                        img: urlImg,
                         directionVente:array['3']['data']
                         },
                         tomorrow:{
                         tempMin: array['4']['data'],
                         tempMax: array['5']['data'],
                         forceVente: array['6']['data'],
-                        img: "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg",
+                        img: urlImg,
                         directionVente:array['7']['data']
                         }
                 }
