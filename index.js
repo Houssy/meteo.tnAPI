@@ -16,7 +16,7 @@ app.get('/*', function(request, response) {
         }
     }
     if(!c){
-        response.send("Ops! "+query['city']+" n'existe plus !");
+        response.send("City "+query['city']+" doesn't exist!");
     }
     //response.send(c)
     //response.send('-------------------------------------------------------')
