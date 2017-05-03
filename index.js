@@ -66,7 +66,6 @@ var weatherObj = [];
         weatherObj.push({
             
                 name: region[0]['data'],
-                img: urlImg,
                 informations: 
                 {
                         today:
@@ -74,12 +73,14 @@ var weatherObj = [];
                         tempMin: array['0']['data'],
                         tempMax: array['1']['data'],
                         forceVente: array['2']['data'],
+                        img: urlImg,
                         directionVente:array['3']['data']
                         },
                         tomorrow:{
                         tempMin: array['4']['data'],
                         tempMax: array['5']['data'],
                         forceVente: array['6']['data'],
+                        img: urlImg,
                         directionVente:array['7']['data']
                         }
                 }
