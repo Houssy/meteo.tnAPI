@@ -34,7 +34,8 @@ var weatherObj = [];
   for (var i = 1; i <= 24; i++) {
   var request = require("request"),
   cheerio = require("cheerio"),
-  url = "http://www.meteo.tn/htmlfr/donnees/testpage.php?gouv="+i;  
+  url = "http://www.meteo.tn/htmlfr/donnees/testpage.php?gouv="+i;
+  urlImg = "http://www.meteo.tn/htmlfr/donnees/images/images_gouvernorats/0"+i+".jpg";
   request(url, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body);
@@ -62,9 +63,10 @@ var weatherObj = [];
         var myJSON = JSON.stringify(myObj);
         console.log(myJSON);
         */
-        var idd = i;
         weatherObj.push({
+            
                 name: region[0]['data'],
+                img: urlImg,
                 informations: 
                 {
                         today:
@@ -72,15 +74,13 @@ var weatherObj = [];
                         tempMin: array['0']['data'],
                         tempMax: array['1']['data'],
                         forceVente: array['2']['data'],
-                        directionVente:array['3']['data'],
-                        id: idd
+                        directionVente:array['3']['data']
                         },
                         tomorrow:{
                         tempMin: array['4']['data'],
                         tempMax: array['5']['data'],
                         forceVente: array['6']['data'],
-                        directionVente:array['7']['data'],
-                        id: idd
+                        directionVente:array['7']['data']
                         }
                 }
             
